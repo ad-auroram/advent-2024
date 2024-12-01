@@ -1,16 +1,14 @@
 def findVals(list1, list2):
-    i = 0
     count = 0
     # go through list 1
     for val in list1:
-        # check if in list 2
         valCount = 0
         for item in list2:
             if val == item:
                 valCount += 1
                 list2.remove(item)
-            count += valCount * (int(val))
-        i += 1
+                print(len(list2))
+        count += valCount * (int(val))
     return count
 
 
