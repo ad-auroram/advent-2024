@@ -1,13 +1,10 @@
 def findVals(list1, list2):
     count = 0
-    # go through list 1
     for val in list1:
         valCount = 0
         for item in list2:
             if val == item:
                 valCount += 1
-                list2.remove(item)
-                print(len(list2))
         count += valCount * (int(val))
     return count
 
