@@ -1,37 +1,36 @@
 
 def isSafe(line):
-    safe = False
+    isSafe = True
     increasing = False
     decreasing = False
-    i=0
-    safeZone=[-3, -2, -1, 1, 2, 3]
-    for val in line:
-        if line[i+1] == " ": break
+    i = 0
+    safeZone = [-3, -2, -1, 1, 2, 3]
+    while i<len(line)-1:
         dif = int(line[i])-int(line[i+1])
         if dif > 0:
             if increasing:
-                safe = False
+                isSafe = False
                 break
             decreasing = True
         elif dif < 0:
             if decreasing:
-                safe = False
+                isSafe = False
                 break
             increasing = True
         else:
-            safe = False
+            isSafe = False
             break
-        if dif in safeZone:
-            safe = True
+        if dif not in safeZone:
+            isSafe = False
+            break
         i+=1
-    return safe
+    return isSafe
 
 file = open("input.txt")
 safe = 0
 for line in file:
     values = [x.strip() for x in line.split(' ')]
-    print(values)
-    if isSafe(line):
+    if isSafe(values):
         safe +=1
 file.close()
 print(safe)
